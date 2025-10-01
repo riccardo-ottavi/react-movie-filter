@@ -14,19 +14,28 @@ console.log(filmsList)
 
 
 export default function FilmsList(){
+
     const [selectedGenre, setSelectedGenre] = useState(null)
+    const [filteredFilmsList, setFilteredFilmsList] = useState(filmsList)
+
     const handleSelect = (e) => {
         setSelectedGenre(e.target.value)
     }
 
     useEffect(() =>{
-        console.log("Effetto usato")
-    }),[selectedGenre]
+        if (selectedGenre) {
+            setFilteredFilmsList(
+                filmsList.filter (film => film.genre === selectedGenre)
+            );
+        }else {
+            setFilteredFilmsList(filmsList)
+        }
+    },[selectedGenre]);
 
     return(
         <div className="list">
         <ul>
-        {filmsList.map(film => 
+        {filteredFilmsList.map(film => 
           <li
           //key=
           >{film.title}</li>
