@@ -1,4 +1,5 @@
 import './App.css'
+import MyHeader from './components/MyHeader'
 
 const filmsList =  [
     { title: 'Inception', genre: 'Fantascienza' },
@@ -15,7 +16,7 @@ function App() {
 
   return (
     <>
-      <h1>Prova</h1>
+      <MyHeader/>
     </>
   )
 }
