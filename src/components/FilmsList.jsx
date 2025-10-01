@@ -11,9 +11,17 @@ const filmsList =  [
 
 console.log(filmsList)  
 
-export default function FilmsList(){
 
-    const [filteredList, setFilteredList] = useState([]);
+
+export default function FilmsList(){
+    const [selectedGenre, setSelectedGenre] = useState(null)
+    const handleSelect = (e) => {
+        setSelectedGenre(e.target.value)
+    }
+
+    useEffect(() =>{
+        console.log("Effetto usato")
+    }),[selectedGenre]
 
     return(
         <div className="list">
@@ -24,7 +32,7 @@ export default function FilmsList(){
           >{film.title}</li>
         )}
         </ul>
-          <select name="Genere" id="Genere">
+          <select name="Genere" id="Genere" onChange={handleSelect}>
             <option value=""></option>
             <option value="Fantascienza">Fantascienza</option>
             <option value="Thriller">Thriller</option>
